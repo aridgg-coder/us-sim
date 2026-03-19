@@ -1,0 +1,69 @@
+{
+  "id": "benchmark-altered-focal-depth",
+  "phantomVersion": "baseline-v1",
+  "anatomyModelId": "baseline-head-phantom-v1",
+  "probePose": {
+    "position_mm": { "x": 60, "y": 25, "z": 10 },
+    "rotation_deg": { "x": 0, "y": 0, "z": -20 }
+  },
+  "ultrasoundParameters": {
+    "frequency_mhz": 2.5,
+    "focal_depth_mm": 72,
+    "gain_db": 18,
+    "intensity": 0.7,
+    "contact_angle_deg": 12,
+    "coupling_quality": 0.92
+  },
+  "expected": {
+    "grayscaleImageCharacteristics": [
+      "focal emphasis shifts deeper than the temporal-window benchmark",
+      "mid-depth response is less concentrated than the baseline case",
+      "deeper target region receives stronger modeled emphasis"
+    ],
+    "semiQuantitativeRanges": {
+      "attenuationEstimate": { "min": 0.95, "max": 1.45 },
+      "focalDepthMm": { "min": 68, "max": 76 }
+    }
+  },
+  "acceptanceCriteria": [
+    "Simulation completes without error",
+    "Reported focal depth follows the requested deeper focal setting",
+    "Output metadata identifies phantom version baseline-v1"
+  ]
+}
+
+*** Add File: /home/wwitschey/us-sim/backend/app/phantom_data.py
+from __future__ import annotations
+
+import json
+from functools import lru_cache
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[2]
+ANATOMY_DIR = ROOT / "frontend" / "public" / "anatomy"
+
+
+def _load_json(name: str) -> dict[str, Any]:
+    with (ANATOMY_DIR / name).open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+@lru_cache(maxsize=1)
+def load_phantom_manifest() -> dict[str, Any]:
+    return _load_json("phantom.manifest.json")
+
+
+@lru_cache(maxsize=1)
+def load_tissue_properties() -> dict[str, Any]:
+    return _load_json("tissue-properties.json")
+
+
+def get_tissue_by_id(tissue_id: str) -> dict[str, Any] | None:
+    table = load_tissue_properties()
+    for tissue in table.get("tissues", []):
+        if tissue.get("id") == tissue_id:
+            return tissue
+    return None
+

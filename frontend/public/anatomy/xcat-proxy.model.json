@@ -1,0 +1,84 @@
+{
+  "id": "xcat-default",
+  "name": "XCAT-Inspired Head Model",
+  "source": "Proxy geometry backed by importable external references",
+  "description": "Scene-ready layered proxy for the head simulation workspace. This file is intended to be replaced or augmented by imported XCAT and public-source meshes.",
+  "layers": [
+    {
+      "id": "scalp",
+      "label": "Scalp",
+      "color": "#d9d0c3",
+      "opacity": 0.92,
+      "scale": [1.48, 1.66, 1.44],
+      "position": [0, -0.08, 0]
+    },
+    {
+      "id": "skull",
+      "label": "Skull",
+      "color": "#f2ece4",
+      "opacity": 0.42,
+      "scale": [1.24, 1.42, 1.2],
+      "position": [0, -0.02, 0.05]
+    },
+    {
+      "id": "csf",
+      "label": "CSF",
+      "color": "#efe8dc",
+      "opacity": 0.16,
+      "scale": [1.13, 1.27, 1.06],
+      "position": [0.01, 0.02, 0.06]
+    },
+    {
+      "id": "brain",
+      "label": "Brain",
+      "color": "#b5a696",
+      "opacity": 0.64,
+      "scale": [1.08, 1.18, 1.01],
+      "position": [0.02, 0.02, 0.08]
+    },
+    {
+      "id": "ventricles",
+      "label": "Ventricles",
+      "color": "#89b3bc",
+      "opacity": 0.28,
+      "scale": [0.28, 0.22, 0.35],
+      "position": [0.02, -0.02, 0.18]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "frontal",
+      "label": "Frontal target",
+      "position": [0.18, 0.42, 0.3]
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal window",
+      "position": [0.98, 0.28, 0.36]
+    }
+  ],
+  "meshes": [
+    {
+      "id": "pituitary-bodyparts3d",
+      "label": "Pituitary Gland",
+      "url": "/anatomy/meshes/pituitary-normalized.obj",
+      "color": "#d94f70",
+      "opacity": 0.96,
+      "position": [0.03, -0.02, 0.16],
+      "scale": [1, 1, 1],
+      "rotationDeg": [0, 0, 0]
+    }
+  ],
+  "references": [
+    {
+      "source": "XCAT",
+      "url": "https://xcatphantom.org/",
+      "notes": "Licensed source to be integrated through an offline import step rather than bundled directly."
+    },
+    {
+      "source": "BodyParts3D",
+      "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+      "notes": "Public metadata and mesh source used to bootstrap open anatomy ingestion. The current manifest includes a normalized pituitary OBJ derived from BodyParts3D element file FJ1796."
+    }
+  ]
+}

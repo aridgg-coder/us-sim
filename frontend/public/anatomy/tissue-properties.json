@@ -1,0 +1,56 @@
+{
+  "version": "baseline-v1",
+  "units": {
+    "soundSpeed": "m/s",
+    "density": "kg/m^3",
+    "attenuation": "dB/cm/MHz",
+    "impedance": "Rayl"
+  },
+  "tissues": [
+    {
+      "id": "scalp",
+      "label": "Scalp / Soft Tissue",
+      "soundSpeed": 1540,
+      "density": 1020,
+      "attenuation": 0.6,
+      "impedance": 1570800
+    },
+    {
+      "id": "skull",
+      "label": "Skull",
+      "soundSpeed": 2800,
+      "density": 1900,
+      "attenuation": 20,
+      "impedance": 5320000
+    },
+    {
+      "id": "csf",
+      "label": "Cerebrospinal Fluid",
+      "soundSpeed": 1505,
+      "density": 1007,
+      "attenuation": 0.05,
+      "impedance": 1512035
+    },
+    {
+      "id": "brain",
+      "label": "Brain Tissue",
+      "soundSpeed": 1546,
+      "density": 1040,
+      "attenuation": 0.65,
+      "impedance": 1607840
+    },
+    {
+      "id": "ventricular_fluid",
+      "label": "Ventricular Fluid",
+      "soundSpeed": 1505,
+      "density": 1007,
+      "attenuation": 0.05,
+      "impedance": 1512035
+    }
+  ],
+  "notes": [
+    "These are baseline homogeneous tissue properties for the first research phantom.",
+    "Values are placeholders for the baseline mode and should later be calibrated against literature and benchmark behavior."
+  ]
+}
+

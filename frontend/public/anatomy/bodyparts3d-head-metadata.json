@@ -1,0 +1,1468 @@
+{
+  "source": "BodyParts3D IS-A Tree metadata",
+  "sourceUrl": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+  "license": "CC BY-SA 2.1 JP",
+  "entryCount": 292,
+  "entries": [
+    {
+      "conceptId": "FMA3939",
+      "representationId": "BP10289",
+      "label": "common carotid artery"
+    },
+    {
+      "conceptId": "FMA3941",
+      "representationId": "BP10288",
+      "label": "right common carotid artery"
+    },
+    {
+      "conceptId": "FMA3947",
+      "representationId": "BP8901",
+      "label": "internal carotid artery"
+    },
+    {
+      "conceptId": "FMA3949",
+      "representationId": "BP7618",
+      "label": "right internal carotid artery"
+    },
+    {
+      "conceptId": "FMA4058",
+      "representationId": "BP10326",
+      "label": "left common carotid artery"
+    },
+    {
+      "conceptId": "FMA4062",
+      "representationId": "BP8900",
+      "label": "left internal carotid artery"
+    },
+    {
+      "conceptId": "FMA4712",
+      "representationId": "BP8014",
+      "label": "posterior vein of left ventricle"
+    },
+    {
+      "conceptId": "FMA5865",
+      "representationId": "BP4693",
+      "label": "cranial nerve"
+    },
+    {
+      "conceptId": "FMA5895",
+      "representationId": "BP5701",
+      "label": "cranial parasympathetic ganglion"
+    },
+    {
+      "conceptId": "FMA7260",
+      "representationId": "BP9283",
+      "label": "anterior papillary muscle of right ventricle"
+    },
+    {
+      "conceptId": "FMA7261",
+      "representationId": "BP8146",
+      "label": "posterior papillary muscle of right ventricle"
+    },
+    {
+      "conceptId": "FMA7262",
+      "representationId": "BP8088",
+      "label": "septal papillary muscle of right ventricle"
+    },
+    {
+      "conceptId": "FMA7264",
+      "representationId": "BP8949",
+      "label": "lateral papillary muscle of left ventricle"
+    },
+    {
+      "conceptId": "FMA7265",
+      "representationId": "BP8573",
+      "label": "anterolateral head of lateral papillary muscle of left ventricle"
+    },
+    {
+      "conceptId": "FMA9291",
+      "representationId": "BP9227",
+      "label": "cavity of right ventricle"
+    },
+    {
+      "conceptId": "FMA9466",
+      "representationId": "BP8928",
+      "label": "cavity of left ventricle"
+    },
+    {
+      "conceptId": "FMA9613",
+      "representationId": "BP9058",
+      "label": "parietal bone"
+    },
+    {
+      "conceptId": "FMA9616",
+      "representationId": "BP8080",
+      "label": "muscle of head"
+    },
+    {
+      "conceptId": "FMA13238",
+      "representationId": "BP8929",
+      "label": "cavity of ventricle"
+    },
+    {
+      "conceptId": "FMA13884",
+      "representationId": "BP7815",
+      "label": "wall of ventricle"
+    },
+    {
+      "conceptId": "FMA13889",
+      "representationId": "BP4630",
+      "label": "pituitary gland"
+    },
+    {
+      "conceptId": "FMA24218",
+      "representationId": "BP7966",
+      "label": "subdivision of head"
+    },
+    {
+      "conceptId": "FMA32582",
+      "representationId": "BP4732",
+      "label": "posterior suboccipital muscle"
+    },
+    {
+      "conceptId": "FMA37682",
+      "representationId": "BP9154",
+      "label": "short head of biceps brachii"
+    },
+    {
+      "conceptId": "FMA37683",
+      "representationId": "BP8817",
+      "label": "long head of biceps brachii"
+    },
+    {
+      "conceptId": "FMA37684",
+      "representationId": "BP5558",
+      "label": "short head of right biceps brachii"
+    },
+    {
+      "conceptId": "FMA37685",
+      "representationId": "BP9153",
+      "label": "short head of left biceps brachii"
+    },
+    {
+      "conceptId": "FMA37686",
+      "representationId": "BP5566",
+      "label": "long head of right biceps brachii"
+    },
+    {
+      "conceptId": "FMA37687",
+      "representationId": "BP8816",
+      "label": "long head of left biceps brachii"
+    },
+    {
+      "conceptId": "FMA37692",
+      "representationId": "BP8345",
+      "label": "long head of triceps brachii"
+    },
+    {
+      "conceptId": "FMA37693",
+      "representationId": "BP8258",
+      "label": "medial head of triceps brachii"
+    },
+    {
+      "conceptId": "FMA37694",
+      "representationId": "BP8526",
+      "label": "lateral head of triceps brachii"
+    },
+    {
+      "conceptId": "FMA37695",
+      "representationId": "BP5562",
+      "label": "medial head of right triceps brachii"
+    },
+    {
+      "conceptId": "FMA37696",
+      "representationId": "BP8257",
+      "label": "medial head of left triceps brachii"
+    },
+    {
+      "conceptId": "FMA37697",
+      "representationId": "BP5550",
+      "label": "lateral head of right triceps brachii"
+    },
+    {
+      "conceptId": "FMA37698",
+      "representationId": "BP8525",
+      "label": "lateral head of left triceps brachii"
+    },
+    {
+      "conceptId": "FMA37699",
+      "representationId": "BP5564",
+      "label": "long head of right triceps brachii"
+    },
+    {
+      "conceptId": "FMA37700",
+      "representationId": "BP8344",
+      "label": "long head of left triceps brachii"
+    },
+    {
+      "conceptId": "FMA38558",
+      "representationId": "BP8016",
+      "label": "humeral head of pronator teres"
+    },
+    {
+      "conceptId": "FMA38559",
+      "representationId": "BP9044",
+      "label": "ulnar head of pronator teres"
+    },
+    {
+      "conceptId": "FMA38560",
+      "representationId": "BP5568",
+      "label": "humeral head of right pronator teres"
+    },
+    {
+      "conceptId": "FMA38561",
+      "representationId": "BP8015",
+      "label": "humeral head of left pronator teres"
+    },
+    {
+      "conceptId": "FMA38562",
+      "representationId": "BP5552",
+      "label": "ulnar head of right pronator teres"
+    },
+    {
+      "conceptId": "FMA38563",
+      "representationId": "BP9043",
+      "label": "ulnar head of left pronator teres"
+    },
+    {
+      "conceptId": "FMA38615",
+      "representationId": "BP8145",
+      "label": "humeral head of flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA38616",
+      "representationId": "BP8541",
+      "label": "ulnar head of flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA38617",
+      "representationId": "BP5570",
+      "label": "humeral head of right flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA38618",
+      "representationId": "BP8144",
+      "label": "humeral head of left flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA38619",
+      "representationId": "BP5554",
+      "label": "ulnar head of right flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA38620",
+      "representationId": "BP8540",
+      "label": "ulnar head of left flexor carpi ulnaris"
+    },
+    {
+      "conceptId": "FMA45729",
+      "representationId": "BP7943",
+      "label": "head of organ"
+    },
+    {
+      "conceptId": "FMA45881",
+      "representationId": "BP8333",
+      "label": "head of biceps femoris"
+    },
+    {
+      "conceptId": "FMA45887",
+      "representationId": "BP8332",
+      "label": "long head of biceps femoris"
+    },
+    {
+      "conceptId": "FMA45888",
+      "representationId": "BP5575",
+      "label": "long head of right biceps femoris"
+    },
+    {
+      "conceptId": "FMA45889",
+      "representationId": "BP8331",
+      "label": "long head of left biceps femoris"
+    },
+    {
+      "conceptId": "FMA45890",
+      "representationId": "BP8617",
+      "label": "short head of biceps femoris"
+    },
+    {
+      "conceptId": "FMA45891",
+      "representationId": "BP5573",
+      "label": "short head of right biceps femoris"
+    },
+    {
+      "conceptId": "FMA45892",
+      "representationId": "BP8616",
+      "label": "short head of left biceps femoris"
+    },
+    {
+      "conceptId": "FMA45950",
+      "representationId": "BP7941",
+      "label": "head of gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45956",
+      "representationId": "BP9218",
+      "label": "medial head of gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45957",
+      "representationId": "BP5539",
+      "label": "medial head of right gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45958",
+      "representationId": "BP9217",
+      "label": "medial head of left gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45959",
+      "representationId": "BP7940",
+      "label": "lateral head of gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45960",
+      "representationId": "BP5541",
+      "label": "lateral head of right gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45961",
+      "representationId": "BP7939",
+      "label": "lateral head of left gastrocnemius"
+    },
+    {
+      "conceptId": "FMA45963",
+      "representationId": "BP8363",
+      "label": "head of flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45969",
+      "representationId": "BP8946",
+      "label": "medial head of flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45970",
+      "representationId": "BP8362",
+      "label": "lateral head of flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45971",
+      "representationId": "BP5546",
+      "label": "medial head of right flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45972",
+      "representationId": "BP8945",
+      "label": "medial head of left flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45973",
+      "representationId": "BP5548",
+      "label": "lateral head of right flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA45974",
+      "representationId": "BP8361",
+      "label": "lateral head of left flexor hallucis brevis"
+    },
+    {
+      "conceptId": "FMA46012",
+      "representationId": "BP8396",
+      "label": "head of adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46014",
+      "representationId": "BP8543",
+      "label": "oblique head of adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46015",
+      "representationId": "BP8395",
+      "label": "transverse head of adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46018",
+      "representationId": "BP5578",
+      "label": "oblique head of right adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46019",
+      "representationId": "BP8542",
+      "label": "oblique head of left adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46020",
+      "representationId": "BP5580",
+      "label": "transverse head of right adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46021",
+      "representationId": "BP8394",
+      "label": "transverse head of left adductor hallucis"
+    },
+    {
+      "conceptId": "FMA46104",
+      "representationId": "BP8723",
+      "label": "superficial head of flexor pollicis brevis"
+    },
+    {
+      "conceptId": "FMA46119",
+      "representationId": "BP8249",
+      "label": "oblique head of adductor pollicis"
+    },
+    {
+      "conceptId": "FMA46120",
+      "representationId": "BP8886",
+      "label": "transverse head of adductor pollicis"
+    },
+    {
+      "conceptId": "FMA46121",
+      "representationId": "BP5560",
+      "label": "oblique head of right adductor pollicis"
+    },
+    {
+      "conceptId": "FMA46122",
+      "representationId": "BP8248",
+      "label": "oblique head of left adductor pollicis"
+    },
+    {
+      "conceptId": "FMA46123",
+      "representationId": "BP5543",
+      "label": "transverse head of right adductor pollicis"
+    },
+    {
+      "conceptId": "FMA46124",
+      "representationId": "BP8885",
+      "label": "transverse head of left adductor pollicis"
+    },
+    {
+      "conceptId": "FMA50028",
+      "representationId": "BP8703",
+      "label": "anterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50029",
+      "representationId": "BP8702",
+      "label": "right anterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50030",
+      "representationId": "BP10236",
+      "label": "left anterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50031",
+      "representationId": "BP7777",
+      "label": "branch of anterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50080",
+      "representationId": "BP8593",
+      "label": "zone of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50081",
+      "representationId": "BP7947",
+      "label": "branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50365",
+      "representationId": "BP8592",
+      "label": "sphenoid part of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50366",
+      "representationId": "BP7627",
+      "label": "sphenoid part of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50367",
+      "representationId": "BP8591",
+      "label": "sphenoid part of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50368",
+      "representationId": "BP8975",
+      "label": "insular part of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50369",
+      "representationId": "BP8974",
+      "label": "insular part of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50370",
+      "representationId": "BP10240",
+      "label": "insular part of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50376",
+      "representationId": "BP8509",
+      "label": "anterolateral central branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50377",
+      "representationId": "BP8508",
+      "label": "anterolateral central branch of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50378",
+      "representationId": "BP10238",
+      "label": "anterolateral central branch of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50379",
+      "representationId": "BP9189",
+      "label": "polar temporal artery"
+    },
+    {
+      "conceptId": "FMA50380",
+      "representationId": "BP7633",
+      "label": "right polar temporal artery"
+    },
+    {
+      "conceptId": "FMA50381",
+      "representationId": "BP9188",
+      "label": "left polar temporal artery"
+    },
+    {
+      "conceptId": "FMA50382",
+      "representationId": "BP9021",
+      "label": "anterior temporal artery"
+    },
+    {
+      "conceptId": "FMA50383",
+      "representationId": "BP9020",
+      "label": "right anterior temporal artery"
+    },
+    {
+      "conceptId": "FMA50384",
+      "representationId": "BP10237",
+      "label": "left anterior temporal artery"
+    },
+    {
+      "conceptId": "FMA50427",
+      "representationId": "BP9259",
+      "label": "hypothalamic branch of posterior communicating artery"
+    },
+    {
+      "conceptId": "FMA50428",
+      "representationId": "BP7615",
+      "label": "hypothalamic branch of right posterior communicating artery"
+    },
+    {
+      "conceptId": "FMA50429",
+      "representationId": "BP9258",
+      "label": "hypothalamic branch of left posterior communicating artery"
+    },
+    {
+      "conceptId": "FMA50436",
+      "representationId": "BP7946",
+      "label": "superior terminal branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50437",
+      "representationId": "BP8808",
+      "label": "prefrontal artery"
+    },
+    {
+      "conceptId": "FMA50438",
+      "representationId": "BP9022",
+      "label": "temporal artery"
+    },
+    {
+      "conceptId": "FMA50439",
+      "representationId": "BP8552",
+      "label": "inferior terminal branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50445",
+      "representationId": "BP7643",
+      "label": "right prefrontal artery"
+    },
+    {
+      "conceptId": "FMA50466",
+      "representationId": "BP9120",
+      "label": "middle temporal branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50467",
+      "representationId": "BP9119",
+      "label": "middle temporal branch of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50468",
+      "representationId": "BP10239",
+      "label": "middle temporal branch of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50469",
+      "representationId": "BP8911",
+      "label": "posterior temporal branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50470",
+      "representationId": "BP8910",
+      "label": "posterior temporal branch of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50471",
+      "representationId": "BP10242",
+      "label": "posterior temporal branch of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50472",
+      "representationId": "BP8855",
+      "label": "temporo-occipital branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50473",
+      "representationId": "BP7648",
+      "label": "temporo-occipital branch of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50474",
+      "representationId": "BP8854",
+      "label": "temporo-occipital branch of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA50475",
+      "representationId": "BP8551",
+      "label": "branch of middle cerebral artery to angular gyrus"
+    },
+    {
+      "conceptId": "FMA50476",
+      "representationId": "BP7610",
+      "label": "branch of right middle cerebral artery to right angular gyrus"
+    },
+    {
+      "conceptId": "FMA50477",
+      "representationId": "BP8550",
+      "label": "branch of left middle cerebral artery to left angular gyrus"
+    },
+    {
+      "conceptId": "FMA50478",
+      "representationId": "BP8807",
+      "label": "left prefrontal artery"
+    },
+    {
+      "conceptId": "FMA50485",
+      "representationId": "BP8640",
+      "label": "anterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50486",
+      "representationId": "BP7607",
+      "label": "right anterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50487",
+      "representationId": "BP8639",
+      "label": "left anterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50488",
+      "representationId": "BP8880",
+      "label": "posterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50489",
+      "representationId": "BP7636",
+      "label": "right posterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50490",
+      "representationId": "BP8879",
+      "label": "left posterior parietal artery"
+    },
+    {
+      "conceptId": "FMA50518",
+      "representationId": "BP7797",
+      "label": "posterior inferior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50519",
+      "representationId": "BP7632",
+      "label": "right posterior inferior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50520",
+      "representationId": "BP7796",
+      "label": "left posterior inferior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50542",
+      "representationId": "BP6340",
+      "label": "basilar artery"
+    },
+    {
+      "conceptId": "FMA50544",
+      "representationId": "BP8960",
+      "label": "anterior inferior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50573",
+      "representationId": "BP9291",
+      "label": "superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50574",
+      "representationId": "BP7645",
+      "label": "right superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50575",
+      "representationId": "BP9290",
+      "label": "left superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50576",
+      "representationId": "BP8699",
+      "label": "branch of superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50577",
+      "representationId": "BP8767",
+      "label": "lateral superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50578",
+      "representationId": "BP7619",
+      "label": "lateral branch of right superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50579",
+      "representationId": "BP8766",
+      "label": "lateral branch of left superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50580",
+      "representationId": "BP8698",
+      "label": "medial branch of superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50581",
+      "representationId": "BP7623",
+      "label": "medial branch of right superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50582",
+      "representationId": "BP8697",
+      "label": "medial branch of left superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50586",
+      "representationId": "BP7895",
+      "label": "branch of posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50587",
+      "representationId": "BP9001",
+      "label": "posteromedial central branch of posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50589",
+      "representationId": "BP7837",
+      "label": "zone of posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50590",
+      "representationId": "BP7977",
+      "label": "precommunicating part of posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50591",
+      "representationId": "BP7836",
+      "label": "postcommunicating part of posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50624",
+      "representationId": "BP7894",
+      "label": "thalamoperforating artery"
+    },
+    {
+      "conceptId": "FMA50629",
+      "representationId": "BP8899",
+      "label": "thalamogeniculate artery"
+    },
+    {
+      "conceptId": "FMA50633",
+      "representationId": "BP8302",
+      "label": "lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50638",
+      "representationId": "BP8487",
+      "label": "medial occipital artery"
+    },
+    {
+      "conceptId": "FMA50639",
+      "representationId": "BP7642",
+      "label": "precommunicating part of right posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50640",
+      "representationId": "BP7976",
+      "label": "precommunicating part of left posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50641",
+      "representationId": "BP7635",
+      "label": "postcommunicating part of right posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50642",
+      "representationId": "BP7835",
+      "label": "postcommunicating part of left posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50643",
+      "representationId": "BP7622",
+      "label": "right lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50644",
+      "representationId": "BP8301",
+      "label": "left lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50645",
+      "representationId": "BP7626",
+      "label": "right medial occipital artery"
+    },
+    {
+      "conceptId": "FMA50646",
+      "representationId": "BP8486",
+      "label": "left medial occipital artery"
+    },
+    {
+      "conceptId": "FMA50647",
+      "representationId": "BP8851",
+      "label": "branch of lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50648",
+      "representationId": "BP8850",
+      "label": "anterior temporal branch of lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50649",
+      "representationId": "BP9028",
+      "label": "middle temporal branch of lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50651",
+      "representationId": "BP8665",
+      "label": "branch of medial occipital artery"
+    },
+    {
+      "conceptId": "FMA50660",
+      "representationId": "BP7640",
+      "label": "posteromedial central branch of right posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50661",
+      "representationId": "BP9000",
+      "label": "posteromedial central branch of left posterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA50664",
+      "representationId": "BP7639",
+      "label": "right thalamoperforating artery"
+    },
+    {
+      "conceptId": "FMA50665",
+      "representationId": "BP7893",
+      "label": "left thalamoperforating artery"
+    },
+    {
+      "conceptId": "FMA50670",
+      "representationId": "BP7612",
+      "label": "right thalamogeniculate artery"
+    },
+    {
+      "conceptId": "FMA50671",
+      "representationId": "BP8898",
+      "label": "left thalamogeniculate artery"
+    },
+    {
+      "conceptId": "FMA50678",
+      "representationId": "BP7604",
+      "label": "anterior temporal branch of right lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50679",
+      "representationId": "BP8849",
+      "label": "anterior temporal branch of left lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50680",
+      "representationId": "BP7616",
+      "label": "middle temporal branch of right lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50681",
+      "representationId": "BP9027",
+      "label": "middle temporal branch of left lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA50694",
+      "representationId": "BP9240",
+      "label": "branch of medial branch of superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50695",
+      "representationId": "BP9239",
+      "label": "superior vermian branch of medial branch of superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50696",
+      "representationId": "BP7647",
+      "label": "superior vermian branch of medial branch of right superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA50697",
+      "representationId": "BP9238",
+      "label": "superior vermian branch of medial branch of left superior cerebellar artery"
+    },
+    {
+      "conceptId": "FMA51886",
+      "representationId": "BP9002",
+      "label": "branch of cerebral arterial circle"
+    },
+    {
+      "conceptId": "FMA52570",
+      "representationId": "BP5712",
+      "label": "branch of cranial nerve"
+    },
+    {
+      "conceptId": "FMA52638",
+      "representationId": "BP5715",
+      "label": "frontal nerve"
+    },
+    {
+      "conceptId": "FMA52639",
+      "representationId": "BP5716",
+      "label": "right frontal nerve"
+    },
+    {
+      "conceptId": "FMA52640",
+      "representationId": "BP5717",
+      "label": "left frontal nerve"
+    },
+    {
+      "conceptId": "FMA52641",
+      "representationId": "BP5718",
+      "label": "branch of frontal nerve"
+    },
+    {
+      "conceptId": "FMA52734",
+      "representationId": "BP8209",
+      "label": "frontal bone"
+    },
+    {
+      "conceptId": "FMA52735",
+      "representationId": "BP9177",
+      "label": "occipital bone"
+    },
+    {
+      "conceptId": "FMA52737",
+      "representationId": "BP7992",
+      "label": "temporal bone"
+    },
+    {
+      "conceptId": "FMA52738",
+      "representationId": "BP8875",
+      "label": "right temporal bone"
+    },
+    {
+      "conceptId": "FMA52739",
+      "representationId": "BP7991",
+      "label": "left temporal bone"
+    },
+    {
+      "conceptId": "FMA52788",
+      "representationId": "BP9057",
+      "label": "right parietal bone"
+    },
+    {
+      "conceptId": "FMA52789",
+      "representationId": "BP9209",
+      "label": "left parietal bone"
+    },
+    {
+      "conceptId": "FMA54241",
+      "representationId": "BP8565",
+      "label": "hair of head"
+    },
+    {
+      "conceptId": "FMA55676",
+      "representationId": "BP5661",
+      "label": "segment of brain"
+    },
+    {
+      "conceptId": "FMA58817",
+      "representationId": "BP9257",
+      "label": "subdivision of head proper"
+    },
+    {
+      "conceptId": "FMA61708",
+      "representationId": "BP9256",
+      "label": "subdivision of auriculotemporal part of head"
+    },
+    {
+      "conceptId": "FMA61815",
+      "representationId": "BP5694",
+      "label": "cardinal segment of brain"
+    },
+    {
+      "conceptId": "FMA61820",
+      "representationId": "BP5664",
+      "label": "segment of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA61823",
+      "representationId": "BP5665",
+      "label": "lobe of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA61857",
+      "representationId": "BP5672",
+      "label": "superior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA61859",
+      "representationId": "BP5677",
+      "label": "middle frontal gyrus"
+    },
+    {
+      "conceptId": "FMA61860",
+      "representationId": "BP5679",
+      "label": "inferior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA61899",
+      "representationId": "BP5687",
+      "label": "superior parietal lobule"
+    },
+    {
+      "conceptId": "FMA61906",
+      "representationId": "BP5676",
+      "label": "middle temporal gyrus"
+    },
+    {
+      "conceptId": "FMA61907",
+      "representationId": "BP5678",
+      "label": "inferior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA61934",
+      "representationId": "BP5507",
+      "label": "choroid plexus of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA61965",
+      "representationId": "BP6566",
+      "label": "fornix of forebrain"
+    },
+    {
+      "conceptId": "FMA61970",
+      "representationId": "BP6551",
+      "label": "commissure of fornix of forebrain"
+    },
+    {
+      "conceptId": "FMA61993",
+      "representationId": "BP5695",
+      "label": "midbrain"
+    },
+    {
+      "conceptId": "FMA61996",
+      "representationId": "BP5662",
+      "label": "segment of forebrain"
+    },
+    {
+      "conceptId": "FMA61997",
+      "representationId": "BP5688",
+      "label": "segment of midbrain"
+    },
+    {
+      "conceptId": "FMA61998",
+      "representationId": "BP5692",
+      "label": "segment of hindbrain"
+    },
+    {
+      "conceptId": "FMA62007",
+      "representationId": "BP6495",
+      "label": "thalamus"
+    },
+    {
+      "conceptId": "FMA62008",
+      "representationId": "BP6496",
+      "label": "hypothalamus"
+    },
+    {
+      "conceptId": "FMA62080",
+      "representationId": "BP6564",
+      "label": "stria medullaris of thalamus"
+    },
+    {
+      "conceptId": "FMA62394",
+      "representationId": "BP6560",
+      "label": "peduncle of midbrain"
+    },
+    {
+      "conceptId": "FMA62398",
+      "representationId": "BP5689",
+      "label": "segment of midbrain tectum"
+    },
+    {
+      "conceptId": "FMA62466",
+      "representationId": "BP6574",
+      "label": "capsule of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA64875",
+      "representationId": "BP4704",
+      "label": "anterior suboccipital muscle"
+    },
+    {
+      "conceptId": "FMA65198",
+      "representationId": "BP5556",
+      "label": "superficial head of right flexor pollicis brevis"
+    },
+    {
+      "conceptId": "FMA65199",
+      "representationId": "BP8722",
+      "label": "superficial head of left flexor pollicis brevis"
+    },
+    {
+      "conceptId": "FMA67325",
+      "representationId": "BP5666",
+      "label": "occipital lobe"
+    },
+    {
+      "conceptId": "FMA67944",
+      "representationId": "BP5696",
+      "label": "cerebellum"
+    },
+    {
+      "conceptId": "FMA67951",
+      "representationId": "BP6557",
+      "label": "lamina of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA67957",
+      "representationId": "BP5682",
+      "label": "segment of gyrus of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA70504",
+      "representationId": "BP7780",
+      "label": "subdivision of common carotid artery"
+    },
+    {
+      "conceptId": "FMA70506",
+      "representationId": "BP7779",
+      "label": "subdivision of internal carotid artery"
+    },
+    {
+      "conceptId": "FMA70523",
+      "representationId": "BP7778",
+      "label": "subdivision of cerebral part of internal carotid artery"
+    },
+    {
+      "conceptId": "FMA70676",
+      "representationId": "BP5683",
+      "label": "subdivision of superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA70701",
+      "representationId": "BP5685",
+      "label": "anterior part of superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA70703",
+      "representationId": "BP5684",
+      "label": "posterior part of superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA71502",
+      "representationId": "BP8125",
+      "label": "set of posterior temporal branches of lateral occipital artery"
+    },
+    {
+      "conceptId": "FMA72653",
+      "representationId": "BP10457",
+      "label": "right superior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72654",
+      "representationId": "BP10453",
+      "label": "left superior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72655",
+      "representationId": "BP10461",
+      "label": "right middle frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72656",
+      "representationId": "BP10463",
+      "label": "left middle frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72657",
+      "representationId": "BP10442",
+      "label": "right inferior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72658",
+      "representationId": "BP10475",
+      "label": "left inferior frontal gyrus"
+    },
+    {
+      "conceptId": "FMA72671",
+      "representationId": "BP10460",
+      "label": "right superior parietal lobule"
+    },
+    {
+      "conceptId": "FMA72672",
+      "representationId": "BP10458",
+      "label": "left superior parietal lobule"
+    },
+    {
+      "conceptId": "FMA72685",
+      "representationId": "BP10448",
+      "label": "right middle temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72686",
+      "representationId": "BP10446",
+      "label": "left middle temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72687",
+      "representationId": "BP10483",
+      "label": "right inferior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72688",
+      "representationId": "BP10437",
+      "label": "left inferior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72800",
+      "representationId": "BP10484",
+      "label": "anterior part of right superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72801",
+      "representationId": "BP10464",
+      "label": "anterior part of left superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72804",
+      "representationId": "BP10433",
+      "label": "posterior part of right superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72805",
+      "representationId": "BP10444",
+      "label": "posterior part of left superior temporal gyrus"
+    },
+    {
+      "conceptId": "FMA72924",
+      "representationId": "BP10452",
+      "label": "right fornix of forebrain"
+    },
+    {
+      "conceptId": "FMA72925",
+      "representationId": "BP10472",
+      "label": "left fornix of forebrain"
+    },
+    {
+      "conceptId": "FMA72975",
+      "representationId": "BP10440",
+      "label": "right occipital lobe"
+    },
+    {
+      "conceptId": "FMA72976",
+      "representationId": "BP10477",
+      "label": "left occipital lobe"
+    },
+    {
+      "conceptId": "FMA73413",
+      "representationId": "BP10431",
+      "label": "right stria medullaris of thalamus"
+    },
+    {
+      "conceptId": "FMA73414",
+      "representationId": "BP10435",
+      "label": "left stria medullaris of thalamus"
+    },
+    {
+      "conceptId": "FMA75865",
+      "representationId": "BP8450",
+      "label": "trunk of branch of internal carotid artery"
+    },
+    {
+      "conceptId": "FMA76107",
+      "representationId": "BP8449",
+      "label": "trunk of branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA76127",
+      "representationId": "BP8448",
+      "label": "trunk of inferior terminal branch of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA76128",
+      "representationId": "BP8447",
+      "label": "trunk of inferior terminal branch of right middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA76129",
+      "representationId": "BP10241",
+      "label": "trunk of inferior terminal branch of left middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA76264",
+      "representationId": "BP7798",
+      "label": "intracranial branch of vertebral artery"
+    },
+    {
+      "conceptId": "FMA76269",
+      "representationId": "BP7896",
+      "label": "branch of basilar artery"
+    },
+    {
+      "conceptId": "FMA78447",
+      "representationId": "BP5512",
+      "label": "region of ventricular system of brain"
+    },
+    {
+      "conceptId": "FMA78448",
+      "representationId": "BP5513",
+      "label": "lateral ventricle"
+    },
+    {
+      "conceptId": "FMA78449",
+      "representationId": "BP10436",
+      "label": "right lateral ventricle"
+    },
+    {
+      "conceptId": "FMA78450",
+      "representationId": "BP10468",
+      "label": "left lateral ventricle"
+    },
+    {
+      "conceptId": "FMA78454",
+      "representationId": "BP5515",
+      "label": "third ventricle"
+    },
+    {
+      "conceptId": "FMA78467",
+      "representationId": "BP5516",
+      "label": "cerebral aqueduct"
+    },
+    {
+      "conceptId": "FMA78469",
+      "representationId": "BP5514",
+      "label": "fourth ventricle"
+    },
+    {
+      "conceptId": "FMA79615",
+      "representationId": "BP7776",
+      "label": "branch of postcommunicating part of anterior cerebral artery"
+    },
+    {
+      "conceptId": "FMA79631",
+      "representationId": "BP8510",
+      "label": "branch of sphenoid part of middle cerebral artery"
+    },
+    {
+      "conceptId": "FMA81150",
+      "representationId": "BP5686",
+      "label": "lobule of cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA83840",
+      "representationId": "BP9168",
+      "label": "nucleus of brain"
+    },
+    {
+      "conceptId": "FMA83915",
+      "representationId": "BP6595",
+      "label": "gray matter of hypothalamus"
+    },
+    {
+      "conceptId": "FMA83966",
+      "representationId": "BP5496",
+      "label": "tentorium cerebelli"
+    },
+    {
+      "conceptId": "FMA84953",
+      "representationId": "BP6666",
+      "label": "space of compartment of head"
+    },
+    {
+      "conceptId": "FMA85453",
+      "representationId": "BP7942",
+      "label": "head of muscle organ"
+    },
+    {
+      "conceptId": "FMA86565",
+      "representationId": "BP8575",
+      "label": "region of papillary muscle of left ventricle"
+    },
+    {
+      "conceptId": "FMA86566",
+      "representationId": "BP8574",
+      "label": "region of lateral papillary muscle of left ventricle"
+    },
+    {
+      "conceptId": "FMA241998",
+      "representationId": "BP6577",
+      "label": "cerebral white matter"
+    },
+    {
+      "conceptId": "FMA242193",
+      "representationId": "BP5508",
+      "label": "region of cerebral cortex"
+    },
+    {
+      "conceptId": "FMA256174",
+      "representationId": "BP6573",
+      "label": "region of cerebral white matter"
+    },
+    {
+      "conceptId": "FMA256693",
+      "representationId": "BP9167",
+      "label": "nucleus of thalamus"
+    },
+    {
+      "conceptId": "FMA258714",
+      "representationId": "BP10434",
+      "label": "right thalamus"
+    },
+    {
+      "conceptId": "FMA258716",
+      "representationId": "BP10487",
+      "label": "left thalamus"
+    },
+    {
+      "conceptId": "FMA260791",
+      "representationId": "BP10430",
+      "label": "white matter of right cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA260794",
+      "representationId": "BP10423",
+      "label": "white matter of left cerebral hemisphere"
+    },
+    {
+      "conceptId": "FMA266054",
+      "representationId": "BP5495",
+      "label": "subdivision of cranial dura mater"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "benchmark-off-angle",
+  "phantomVersion": "baseline-v1",
+  "anatomyModelId": "baseline-head-phantom-v1",
+  "probePose": {
+    "position_mm": { "x": 48, "y": 32, "z": 12 },
+    "rotation_deg": { "x": 0, "y": 0, "z": -42 }
+  },
+  "ultrasoundParameters": {
+    "frequency_mhz": 2.5,
+    "focal_depth_mm": 55,
+    "gain_db": 18,
+    "intensity": 0.7,
+    "contact_angle_deg": 26,
+    "coupling_quality": 0.88
+  },
+  "expected": {
+    "grayscaleImageCharacteristics": [
+      "beam appears less centered than the temporal-window benchmark",
+      "signal quality is reduced relative to the baseline temporal-window case",
+      "focal region appears laterally displaced"
+    ],
+    "semiQuantitativeRanges": {
+      "attenuationEstimate": { "min": 1.0, "max": 1.6 },
+      "focalDepthMm": { "min": 48, "max": 60 }
+    }
+  },
+  "acceptanceCriteria": [
+    "Simulation completes without error",
+    "Attenuation estimate is higher than the temporal-window baseline",
+    "Output metadata identifies phantom version baseline-v1"
+  ]
+}
+

@@ -1,0 +1,77 @@
+{
+  "id": "baseline-head-phantom-v1",
+  "version": "baseline-v1",
+  "name": "Baseline Head Phantom",
+  "description": "First research phantom for the US head simulation baseline mode.",
+  "coordinateSystem": {
+    "handedness": "right-handed",
+    "units": "mm",
+    "axes": {
+      "x": "left-right",
+      "y": "anterior-posterior",
+      "z": "inferior-superior"
+    }
+  },
+  "structures": [
+    {
+      "id": "scalp",
+      "label": "Scalp / Superficial Soft Tissue",
+      "tissueId": "scalp",
+      "renderLayerId": "scalp"
+    },
+    {
+      "id": "skull",
+      "label": "Skull",
+      "tissueId": "skull",
+      "renderLayerId": "skull"
+    },
+    {
+      "id": "csf",
+      "label": "Cerebrospinal Fluid",
+      "tissueId": "csf",
+      "renderLayerId": "csf"
+    },
+    {
+      "id": "brain",
+      "label": "Brain Parenchyma",
+      "tissueId": "brain",
+      "renderLayerId": "brain"
+    },
+    {
+      "id": "ventricles",
+      "label": "Ventricles",
+      "tissueId": "ventricular_fluid",
+      "renderLayerId": "ventricles"
+    }
+  ],
+  "probeTargets": [
+    {
+      "id": "temporal_window",
+      "label": "Temporal Acoustic Window",
+      "landmarkId": "temporal"
+    },
+    {
+      "id": "frontal_target",
+      "label": "Frontal Target",
+      "landmarkId": "frontal"
+    }
+  ],
+  "sourcePolicy": {
+    "primary": "licensed XCAT-derived geometry when available",
+    "secondary": "public-source anatomy for bootstrap and comparison",
+    "fallback": "hand-authored proxy geometry only as a temporary fallback"
+  },
+  "provenance": [
+    {
+      "source": "XCAT",
+      "url": "https://xcatphantom.org/",
+      "notes": "Licensed source to be integrated through offline import."
+    },
+    {
+      "source": "BodyParts3D",
+      "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+      "notes": "Public metadata and mesh source used for bootstrap and comparison."
+    }
+  ]
+}
+

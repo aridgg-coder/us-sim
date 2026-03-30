@@ -6,8 +6,12 @@ coverage/
 __pycache__/
 .pytest_cache/
 .venv/
+venv/
+backend/venv/
 *.pyc
 .DS_Store
 *.log
 *.egg-info/
 backend/run_artifacts/
+matlab_installer.zip
+backend/get-pip.py

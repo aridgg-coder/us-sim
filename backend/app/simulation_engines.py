@@ -12,7 +12,7 @@ from .models import (
     SimulationSummary,
 )
 from .phantom_data import get_tissue_by_id, load_phantom_manifest
-from .tusx_runner import run_tusx_external
+from .bmode_processor import process_bmode_image
 
 EngineName = Literal["baseline", "tusx", "babelbrain"]
 
@@ -150,8 +150,22 @@ def run_tusx_engine(
     if handoff_path and run_directory:
         try:
             payload = run_tusx_external(Path(handoff_path), Path(run_directory))
+            
+            # Check if real k-Wave simulation was run (Phase 3)
+            if is_real_kwave_result(payload):
+                # Process B-mode image from pressure field
+                pressure_file = Path(run_directory) / "pressure_field.mat"
+                if pressure_file.exists():
+                    bmode_image_path = process_bmode_image(str(pressure_file), str(run_directory))
+                    # Convert to URL path (assuming static serving)
+                    grayscale_image_url = f"/static/{Path(bmode_image_path).name}"
+                else:
+                    grayscale_image_url = payload["grayscale_image_url"]  # fallback
+            else:
+                grayscale_image_url = payload["grayscale_image_url"]
+            
             return EngineResult(
-                grayscale_image_url=payload["grayscale_image_url"],
+                grayscale_image_url=grayscale_image_url,
                 summary=SimulationSummary(**payload["summary"]),
                 path_segments=[
                     PathSegment(**segment) for segment in payload["path_segments"]
@@ -165,6 +179,12 @@ def run_tusx_engine(
             # a real TUSX installation is available.
             return _tusx_stub_simulation(request)
     return _tusx_stub_simulation(request)
+
+
+def is_real_kwave_result(payload: dict) -> bool:
+    """Check if the result comes from real k-Wave simulation (Phase 3)."""
+    metadata = payload.get("simulation_metadata", {})
+    return metadata.get("engine") == "k-wave" and metadata.get("resolution") == "Phase 3 (real k-Wave)"
 
 
 def _babelbrain_stub_simulation(request: SimulationRequest) -> EngineResult:

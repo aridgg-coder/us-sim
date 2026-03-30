@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from .engine_runs import write_engine_run_artifacts
 from .models import EngineMetadata, SimulationRequest, SimulationResponse
@@ -17,6 +18,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files for simulation results
+app.mount("/static", StaticFiles(directory="run_artifacts"), name="static")
 
 
 @app.get("/health")

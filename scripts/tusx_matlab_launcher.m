@@ -14,32 +14,9 @@
 %   - tusx_result.json in the same directory as the input JSON
 
 function tusx_matlab_launcher()
-    % Get input/output paths from command line or environment
-    args = string(argv);
-    
-    input_file = [];
-    run_dir = [];
-    
-    % Parse arguments: --input <file> --run-dir <dir>
-    for i = 1:length(args)
-        if args(i) == "--input"
-            if i < length(args)
-                input_file = char(args(i+1));
-            end
-        elseif args(i) == "--run-dir"
-            if i < length(args)
-                run_dir = char(args(i+1));
-            end
-        end
-    end
-    
-    % Fallback to environment variables
-    if isempty(input_file)
-        input_file = getenv('TUSX_INPUT_FILE');
-    end
-    if isempty(run_dir)
-        run_dir = getenv('TUSX_RUN_DIR');
-    end
+    % MATLAB -batch does not expose argv like Octave; read paths from env.
+    input_file = getenv('TUSX_INPUT_FILE');
+    run_dir = getenv('TUSX_RUN_DIR');
     
     % Initialize environment
     initialize_tusx_environment();
@@ -155,8 +132,8 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     % PHASE 3: Real k-Wave simulation using TUSX
     fprintf('Starting Phase 3 k-Wave simulation...\n');
     
-    % Load synthetic head model
-    skull_nifti_path = fullfile(getenv('TUSX_RUN_DIR'), '..', 'data', 'synthetic_head.nii.gz');
+    % Load synthetic head model from repository data directory
+    skull_nifti_path = fullfile(getenv('US_SIM_ROOT'), 'backend', 'data', 'synthetic_head.nii.gz');
     if ~isfile(skull_nifti_path)
         error('Synthetic head model not found: %s', skull_nifti_path);
     end
@@ -164,6 +141,9 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     % Load skull mask
     skull_info = niftiinfo(skull_nifti_path);
     skull_mask = niftiread(skull_nifti_path);
+
+    % Downsample for practical runtime/memory in Phase 3 integration testing.
+    skull_mask = skull_mask(1:4:end, 1:4:end, 1:4:end);
     
     % Set up transducer parameters (simplified for initial testing)
     transducer = struct();
@@ -196,9 +176,9 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     medium.alpha_coeff = 0.5 * ones(grid_size);   % dB/(MHz^y cm)
     medium.alpha_power = 1.1;
     
-    % Create time array
-    t_end = 2 * max(grid_size) * dx / min(medium.sound_speed(:));  % 2x traversal time
-    kgrid.setTime(round(t_end / kgrid.dt), kgrid.dt);
+    % Create time array using k-Wave helper (stable dt/CFL handling).
+    kgrid.makeTime(medium.sound_speed);
+    t_end = kgrid.t_array(end);
     
     % Create source (transducer aperture)
     source.p_mask = zeros(grid_size);
@@ -209,8 +189,8 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     source.p_mask(:, aperture_start:aperture_end, 1) = 1;
     
     % Create initial pressure distribution (focused wave)
-    source.p = zeros(grid_size);
-    source.p(source.p_mask == 1) = 1;  % uniform pressure
+    source.p0 = zeros(grid_size);
+    source.p0(source.p_mask == 1) = 1;  % uniform pressure
     
     % Set sensor to record pressure everywhere
     sensor.mask = ones(grid_size);
@@ -226,9 +206,17 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     computation_time = toc;
     fprintf('Simulation completed in %.2f seconds\n', computation_time);
     
-    % Extract final pressure field (at focal time)
-    [~, focal_time_index] = max(abs(sensor_data.p(:, round(end/2), round(end/2))));
-    pressure_field = sensor_data.p(:, :, :, focal_time_index);
+    % Extract final pressure field from sensor samples and reshape to grid.
+    pressure_samples = sensor_data.p;
+    num_points = numel(sensor.mask);
+    if size(pressure_samples, 1) == num_points
+        last_sample = pressure_samples(:, end);
+    elseif size(pressure_samples, 2) == num_points
+        last_sample = pressure_samples(end, :)';
+    else
+        error('Unexpected sensor_data.p shape: %dx%d', size(pressure_samples, 1), size(pressure_samples, 2));
+    end
+    pressure_field = reshape(last_sample, grid_size);
     
     % Save pressure field for later B-mode processing
     pressure_file = fullfile(getenv('TUSX_RUN_DIR'), 'pressure_field.mat');

@@ -96,30 +96,67 @@ def run_matlab_tusx(
     
     # Build MATLAB launcher script path
     launcher_script = Path(__file__).resolve().parent / "tusx_matlab_launcher.m"
-    
-    # Build MATLAB command to run the launcher script
-    # MATLAB batch mode: -batch "script_name; exit;"
-    matlab_cmd = "disp('Hello from MATLAB');"
+
+    def wsl_to_windows_path(path: Path) -> str:
+        """Convert WSL path to Windows path for MATLAB running on Windows."""
+        p = str(path)
+        if p.startswith("/mnt/") and len(p) > 6:
+            drive = p[5].upper()
+            rest = p[6:].replace("/", "\\")
+            return f"{drive}:{rest}"
+        distro = os.getenv("WSL_DISTRO_NAME", "Ubuntu")
+        return f"\\\\wsl.localhost\\{distro}{p.replace('/', '\\')}"
     
     # Set up environment with k-Wave and TUSX paths
     env = os.environ.copy()
-    env["TUSX_INPUT_FILE"] = str(run_dir / "tusx_input.json")
-    env["TUSX_RUN_DIR"] = str(run_dir)
+    tusx_input_file = wsl_to_windows_path((run_dir / "tusx_input.json").resolve())
+    tusx_run_dir = wsl_to_windows_path(run_dir.resolve())
     
     # Load KWAVE_PATH and TUSX_PATH from environment
     kwave_path = env.get("KWAVE_PATH") or "/mnt/c/Users/rakxa/Desktop/ucl-bug-k-wave-1.4.1.0"
     tusx_path = env.get("TUSX_PATH") or "/home/aridgg/us-sim/tusx"
-    
-    env["KWAVE_PATH"] = kwave_path
-    env["TUSX_PATH"] = tusx_path
+
+    def to_windows_visible_path(path_str: str) -> str:
+        p = Path(path_str)
+        if not p.is_absolute():
+            p = (Path(__file__).resolve().parents[1] / p).resolve()
+        return wsl_to_windows_path(p)
+
+    kwave_path_win = to_windows_visible_path(kwave_path)
+    tusx_path_win = to_windows_visible_path(tusx_path)
+
+    us_sim_root = wsl_to_windows_path(Path(__file__).resolve().parents[1])
+
+    # Build MATLAB command to run launcher with explicit runtime env vars.
+    matlab_cmd = " ".join(
+        [
+            f"setenv('TUSX_INPUT_FILE','{tusx_input_file}');",
+            f"setenv('TUSX_RUN_DIR','{tusx_run_dir}');",
+            f"setenv('US_SIM_ROOT','{us_sim_root}');",
+            f"setenv('KWAVE_PATH','{kwave_path_win}');",
+            f"setenv('TUSX_PATH','{tusx_path_win}');",
+            f"addpath('{launcher_script.parent}');",
+            "tusx_matlab_launcher;",
+        ]
+    )
     
     # Build command using WSL-aware builder if needed
     cmd = MATLABConfig.build_wsl_matlab_command(matlab_exe, matlab_cmd)
     
     # Run MATLAB
     try:
-        returncode = os.system(cmd)
-        return returncode, "", ""  # os.system doesn't capture output
+        completed = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300,
+            env=env,
+            cwd=str(run_dir),
+            check=False,
+        )
+        return completed.returncode, completed.stdout, completed.stderr
+    except subprocess.TimeoutExpired:
+        return 124, "", "MATLAB simulation timed out after 5 minutes"
     except Exception as e:
         return 1, "", f"Failed to run MATLAB: {e}"
 

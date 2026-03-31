@@ -142,10 +142,17 @@ class MATLABConfig:
             Command list for subprocess.run
         """
         if MATLABConfig.is_wsl():
-            # In WSL, run MATLAB executable directly with shell
-            cmd = f'"{matlab_exe}" -batch "{matlab_cmd}"'
+            # On WSL, invoke Windows MATLAB via PowerShell to avoid exec-format
+            # errors and cmd.exe UNC working-directory issues.
+            win_exe = str(matlab_exe).replace("/mnt/c", "C:").replace("/", "\\")
+            cmd = [
+                "powershell.exe",
+                "-NoProfile",
+                "-Command",
+                f"& '{win_exe}' -batch \"{matlab_cmd}\"",
+            ]
         else:
-            cmd = f'"{matlab_exe}" -batch "{matlab_cmd}"'
+            cmd = [str(matlab_exe), "-batch", matlab_cmd]
         
         return cmd
     

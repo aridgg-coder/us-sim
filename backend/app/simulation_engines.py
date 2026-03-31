@@ -13,6 +13,7 @@ from .models import (
 )
 from .phantom_data import get_tissue_by_id, load_phantom_manifest
 from .bmode_processor import process_bmode_image
+from .tusx_runner import run_tusx_external
 
 EngineName = Literal["baseline", "tusx", "babelbrain"]
 
@@ -156,9 +157,10 @@ def run_tusx_engine(
                 # Process B-mode image from pressure field
                 pressure_file = Path(run_directory) / "pressure_field.mat"
                 if pressure_file.exists():
-                    bmode_image_path = process_bmode_image(str(pressure_file), str(run_directory))
-                    # Convert to URL path (assuming static serving)
-                    grayscale_image_url = f"/static/{Path(bmode_image_path).name}"
+                    bmode_image_path = Path(process_bmode_image(str(pressure_file), str(run_directory)))
+                    run_artifacts_root = Path(__file__).resolve().parents[1] / "run_artifacts"
+                    relative_image_path = bmode_image_path.relative_to(run_artifacts_root)
+                    grayscale_image_url = f"/static/{relative_image_path.as_posix()}"
                 else:
                     grayscale_image_url = payload["grayscale_image_url"]  # fallback
             else:

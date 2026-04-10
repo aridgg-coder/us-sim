@@ -1,8 +1,8 @@
 {
   "id": "xcat-default",
-  "name": "XCAT-Inspired Head Model",
-  "source": "Proxy geometry backed by importable external references",
-  "description": "Scene-ready layered proxy for the head simulation workspace. This file is intended to be replaced or augmented by imported XCAT and public-source meshes.",
+  "name": "BrainWeb-Derived Head Model",
+  "source": "BrainWeb discrete anatomical phantom with supplemental proxy layers",
+  "description": "Scene-ready head model using a BrainWeb-derived outer head mesh with proxy internal layers for ongoing simulation UI development.",
   "layers": [
     {
       "id": "scalp",
@@ -59,9 +59,9 @@
   ],
   "meshes": [
     {
-      "id": "synthetic-head-outer",
-      "label": "Synthetic Head Outer Surface",
-      "url": "/anatomy/meshes/synthetic-head-outer.obj",
+      "id": "brainweb-head-outer",
+      "label": "BrainWeb Head Outer Surface",
+      "url": "/anatomy/meshes/brainweb-head-outer.obj",
       "color": "#d8cdbd",
       "opacity": 0.94,
       "position": [0, 0, 0],
@@ -84,6 +84,11 @@
       "source": "XCAT",
       "url": "https://xcatphantom.org/",
       "notes": "Licensed source to be integrated through an offline import step rather than bundled directly."
+    },
+    {
+      "source": "BrainWeb",
+      "url": "https://brainweb.bic.mni.mcgill.ca/brainweb/",
+      "notes": "MRI-derived discrete anatomical phantom used here to extract a more realistic outer head surface including skull and surrounding tissues."
     },
     {
       "source": "BodyParts3D",

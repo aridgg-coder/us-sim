@@ -1,5 +1,5 @@
 import { Euler, Quaternion, Vector3 } from "three";
-import syntheticHeadSurface from "./generated/syntheticHeadSurface.json";
+import brainwebHeadSurface from "./generated/brainwebHeadSurface.json";
 
 const HEAD_GROUP_EULER = new Euler(0.2, -0.35, 0, "XYZ");
 const PROBE_LOCAL_TRANSDUCER_CENTER = new Vector3(0, -0.625, 0);
@@ -11,7 +11,7 @@ type SurfaceSample = {
   normal: Vector3;
 };
 
-const SURFACE_SAMPLES: SurfaceSample[] = syntheticHeadSurface.samples.map((sample) => ({
+const SURFACE_SAMPLES: SurfaceSample[] = brainwebHeadSurface.samples.map((sample) => ({
   point: new Vector3(sample.point[0], sample.point[1], sample.point[2]).applyEuler(HEAD_GROUP_EULER),
   normal: new Vector3(sample.normal[0], sample.normal[1], sample.normal[2])
     .applyEuler(HEAD_GROUP_EULER)

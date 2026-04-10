@@ -13,5 +13,10 @@ backend/venv/
 *.log
 *.egg-info/
 backend/run_artifacts/
+run_artifacts/
 matlab_installer.zip
 backend/get-pip.py
+.env
+.pids/
+backend/data/cq500/
+backend/data/brainweb_normal_crisp.mnc.gz

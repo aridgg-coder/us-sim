@@ -218,8 +218,13 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     end
     pressure_field = reshape(last_sample, grid_size);
     
+    % Resolve current and future reconstruction artifact paths.
+    pressure_file = input_data.artifacts.pressure_field_file;
+    receive_channel_data_file = input_data.artifacts.receive_channel_data_file;
+    receive_channel_metadata_file = input_data.artifacts.receive_channel_metadata_file;
+    reconstruction_metadata_file = input_data.artifacts.reconstruction_metadata_file;
+
     % Save pressure field for later B-mode processing
-    pressure_file = fullfile(getenv('TUSX_RUN_DIR'), 'pressure_field.mat');
     save(pressure_file, 'pressure_field', 'kgrid', 'medium', 'transducer');
     fprintf('Pressure field saved to: %s\n', pressure_file);
     
@@ -274,7 +279,11 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     metadata.resolution = 'Phase 3 (real k-Wave)';
     metadata.computation_time_seconds = computation_time;
     metadata.pressure_field_file = pressure_file;
+    metadata.receive_channel_data_file = receive_channel_data_file;
+    metadata.receive_channel_metadata_file = receive_channel_metadata_file;
+    metadata.reconstruction_metadata_file = reconstruction_metadata_file;
+    metadata.receive_channel_capture = 'planned_not_yet_implemented';
     metadata.grid_size = grid_size;
     metadata.voxel_size_mm = [dx*1000, dy*1000, dz*1000];
-    metadata.notes = 'Real k-Wave simulation completed, B-mode processing pending';
+    metadata.notes = 'Real k-Wave simulation completed, B-mode processing pending. Receive-channel artifact paths reserved for Phase 2.';
 end

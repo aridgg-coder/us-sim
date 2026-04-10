@@ -7,7 +7,7 @@ from typing import Any
 
 from .models import SimulationRequest
 from .simulation_engines import EngineName, EngineResult
-from .tusx_handoff import build_tusx_input_package
+from .tusx_handoff import build_reconstruction_artifact_paths, build_tusx_input_package
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -24,6 +24,7 @@ def write_engine_run_artifacts(
     timestamp = datetime.now(UTC)
     run_dir = RUNS_DIR / timestamp.strftime("%Y%m%d") / f"{engine}-{job_id}"
     run_dir.mkdir(parents=True, exist_ok=True)
+    reconstruction_artifact_paths = build_reconstruction_artifact_paths(run_dir)
 
     request_payload = request.model_dump(mode="json")
     normalized_result_payload = {
@@ -41,6 +42,7 @@ def write_engine_run_artifacts(
         "run_directory": str(run_dir),
         "probe_pose": request_payload["probe_pose"],
         "ultrasound_parameters": request_payload["ultrasound_parameters"],
+        "artifacts": reconstruction_artifact_paths,
         "notes": (
             "External-engine handoff artifact. "
             "The active TUSX runner consumes this file and writes tusx_result.json back into the same run directory."
@@ -54,6 +56,11 @@ def write_engine_run_artifacts(
             "request.json",
             "normalized_result.json",
             "external_handoff.json",
+            "tusx_input.json",
+            "pressure_field.mat",
+            "receive_channel_data.npz",
+            "receive_channel_metadata.json",
+            "reconstruction_metadata.json",
         ],
     }
 
@@ -82,6 +89,10 @@ def write_engine_run_artifacts(
         "tusx_input_path": (
             tusx_package_metadata["package_path"] if tusx_package_metadata else ""
         ),
+        "pressure_field_path": reconstruction_artifact_paths["pressure_field_file"],
+        "receive_channel_data_path": reconstruction_artifact_paths["receive_channel_data_file"],
+        "receive_channel_metadata_path": reconstruction_artifact_paths["receive_channel_metadata_file"],
+        "reconstruction_metadata_path": reconstruction_artifact_paths["reconstruction_metadata_file"],
         "created_at_utc": timestamp.isoformat(),
         "adapter_version": "tusx-path-b-v1",
     }

@@ -58,6 +58,10 @@ class EngineMetadata(BaseModel):
     manifest_path: str
     handoff_path: str
     tusx_input_path: str = ""
+    pressure_field_path: str = ""
+    receive_channel_data_path: str = ""
+    receive_channel_metadata_path: str = ""
+    reconstruction_metadata_path: str = ""
     created_at_utc: str
 
 

@@ -13,6 +13,10 @@ from .models import (
 )
 from .phantom_data import get_tissue_by_id, load_phantom_manifest
 from .bmode_processor import process_bmode_image
+from .reconstruction.channel_data import (
+    materialize_receive_channel_npz,
+    reconstruct_bmode_from_receive_channel,
+)
 from .tusx_runner import run_tusx_external
 
 EngineName = Literal["baseline", "tusx", "babelbrain"]
@@ -154,15 +158,7 @@ def run_tusx_engine(
             
             # Check if real k-Wave simulation was run (Phase 3)
             if is_real_kwave_result(payload):
-                # Process B-mode image from pressure field
-                pressure_file = Path(run_directory) / "pressure_field.mat"
-                if pressure_file.exists():
-                    bmode_image_path = Path(process_bmode_image(str(pressure_file), str(run_directory)))
-                    run_artifacts_root = Path(__file__).resolve().parents[2] / "run_artifacts"
-                    relative_image_path = bmode_image_path.relative_to(run_artifacts_root)
-                    grayscale_image_url = f"/static/{relative_image_path.as_posix()}"
-                else:
-                    grayscale_image_url = payload["grayscale_image_url"]  # fallback
+                grayscale_image_url = _build_real_kwave_image_url(payload, run_directory)
             else:
                 grayscale_image_url = payload["grayscale_image_url"]
             
@@ -187,6 +183,47 @@ def is_real_kwave_result(payload: dict) -> bool:
     """Check if the result comes from real k-Wave simulation (Phase 3)."""
     metadata = payload.get("simulation_metadata", {})
     return metadata.get("engine") == "k-wave" and metadata.get("resolution") == "Phase 3 (real k-Wave)"
+
+
+def _build_real_kwave_image_url(payload: dict, run_directory: str | None) -> str:
+    if not run_directory:
+        return payload["grayscale_image_url"]
+
+    run_dir = Path(run_directory)
+    metadata = payload.get("simulation_metadata", {})
+    raw_receive_channel_path = metadata.get("receive_channel_raw_file") or metadata.get("receive_channel_raw_path")
+    receive_channel_data_path = metadata.get("receive_channel_data_file")
+    receive_channel_metadata_path = metadata.get("receive_channel_metadata_file")
+    pressure_field_path = metadata.get("pressure_field_file") or str(run_dir / "pressure_field.mat")
+
+    bmode_image_path: Path | None = None
+    if raw_receive_channel_path and receive_channel_data_path and receive_channel_metadata_path:
+        raw_path = Path(raw_receive_channel_path)
+        metadata_path = Path(receive_channel_metadata_path)
+        if raw_path.exists() and metadata_path.exists():
+            npz_path, _channel_metadata = materialize_receive_channel_npz(
+                raw_mat_path=raw_path,
+                npz_path=receive_channel_data_path,
+                metadata_json_path=metadata_path,
+            )
+            bmode_image_path = Path(
+                reconstruct_bmode_from_receive_channel(
+                    npz_path=npz_path,
+                    metadata_json_path=metadata_path,
+                    output_dir=run_dir,
+                )
+            )
+
+    if bmode_image_path is None:
+        pressure_file = Path(pressure_field_path)
+        if pressure_file.exists():
+            bmode_image_path = Path(process_bmode_image(str(pressure_file), str(run_dir)))
+        else:
+            return payload["grayscale_image_url"]
+
+    run_artifacts_root = Path(__file__).resolve().parents[2] / "run_artifacts"
+    relative_image_path = bmode_image_path.relative_to(run_artifacts_root)
+    return f"/static/{relative_image_path.as_posix()}"
 
 
 def _babelbrain_stub_simulation(request: SimulationRequest) -> EngineResult:

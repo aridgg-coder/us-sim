@@ -10,6 +10,7 @@ from .phantom_data import load_phantom_manifest, load_tissue_properties
 def build_reconstruction_artifact_paths(run_dir: Path) -> dict[str, str]:
     return {
         "pressure_field_file": str(run_dir / "pressure_field.mat"),
+        "receive_channel_raw_file": str(run_dir / "receive_channel_data.mat"),
         "receive_channel_data_file": str(run_dir / "receive_channel_data.npz"),
         "receive_channel_metadata_file": str(run_dir / "receive_channel_metadata.json"),
         "reconstruction_metadata_file": str(run_dir / "reconstruction_metadata.json"),

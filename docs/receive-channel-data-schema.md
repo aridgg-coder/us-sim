@@ -25,6 +25,15 @@ Suggested filename:
 
 - `receive_channel_data.npz`
 
+Current implementation note:
+
+- the MATLAB wrapper currently writes an intermediate raw file
+  `receive_channel_data.mat`
+- the Python backend then materializes the planned
+  `receive_channel_data.npz` artifact from that raw file
+- this keeps the public artifact contract stable while avoiding a direct MATLAB
+  dependency on writing NumPy archives
+
 Suggested companion metadata file:
 
 - `receive_channel_metadata.json`
@@ -38,6 +47,7 @@ descriptions.
 - `tusx_input.json`
 - `tusx_result.json`
 - `pressure_field.mat` (legacy fallback / debug output)
+- `receive_channel_data.mat` (current MATLAB-side raw channel-data artifact)
 - `receive_channel_data.npz` (Phase 2 primary reconstruction input)
 - `receive_channel_metadata.json`
 - `reconstruction_metadata.json` (written by the Python reconstruction layer)

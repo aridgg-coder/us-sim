@@ -220,6 +220,7 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     
     % Resolve current and future reconstruction artifact paths.
     pressure_file = input_data.artifacts.pressure_field_file;
+    receive_channel_raw_file = input_data.artifacts.receive_channel_raw_file;
     receive_channel_data_file = input_data.artifacts.receive_channel_data_file;
     receive_channel_metadata_file = input_data.artifacts.receive_channel_metadata_file;
     reconstruction_metadata_file = input_data.artifacts.reconstruction_metadata_file;
@@ -227,6 +228,63 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     % Save pressure field for later B-mode processing
     save(pressure_file, 'pressure_field', 'kgrid', 'medium', 'transducer');
     fprintf('Pressure field saved to: %s\n', pressure_file);
+
+    % Extract a first receive aperture from the recorded full-field time series.
+    pressure_time_series = sensor_data.p;
+    if size(pressure_time_series, 1) ~= num_points
+        pressure_time_series = pressure_time_series';
+    end
+
+    receive_element_count = min(64, max(8, round((aperture_end - aperture_start + 1) / 2)));
+    receive_y_positions = unique(round(linspace(aperture_start, aperture_end, receive_element_count)));
+    receive_element_count = length(receive_y_positions);
+    receive_x = round(grid_size(1) / 2);
+    receive_z = 1;
+
+    receive_linear_indices = zeros(receive_element_count, 1);
+    element_positions_mm = zeros(receive_element_count, 3);
+    element_normals = zeros(receive_element_count, 3);
+    for element_idx = 1:receive_element_count
+        receive_y = receive_y_positions(element_idx);
+        receive_linear_indices(element_idx) = sub2ind(grid_size, receive_x, receive_y, receive_z);
+        element_positions_mm(element_idx, :) = [
+            (receive_x - 1) * dx * 1000,
+            (receive_y - 1) * dy * 1000,
+            (receive_z - 1) * dz * 1000
+        ];
+        element_normals(element_idx, :) = [0, 0, 1];
+    end
+
+    rf_data = zeros(1, receive_element_count, size(pressure_time_series, 2), 'single');
+    for element_idx = 1:receive_element_count
+        rf_data(1, element_idx, :) = single(pressure_time_series(receive_linear_indices(element_idx), :));
+    end
+    time_axis_s = double(kgrid.t_array(:));
+    tx_event_origin_mm = [
+        (receive_x - 1) * dx * 1000,
+        ((aperture_start + aperture_end) / 2 - 1) * dy * 1000,
+        (receive_z - 1) * dz * 1000
+    ];
+
+    save(receive_channel_raw_file, 'rf_data', 'time_axis_s', 'element_positions_mm', 'element_normals', 'tx_event_origin_mm');
+    fprintf('Receive channel raw data saved to: %s\n', receive_channel_raw_file);
+
+    receive_channel_metadata = struct();
+    receive_channel_metadata.schema_version = 'receive-channel-v1';
+    receive_channel_metadata.job_id = input_data.job_id;
+    receive_channel_metadata.created_at_utc = char(datetime('now', 'TimeZone', 'UTC', 'Format', 'yyyy-MM-dd''T''HH:mm:ssXXX'));
+    receive_channel_metadata.engine = 'tusx';
+    receive_channel_metadata.simulation_backend = struct('toolbox', 'k-wave', 'wrapper', 'tusx_matlab_launcher.m', 'resolution', 'phase2-receive-channel');
+    receive_channel_metadata.data_layout = struct('rf_data_shape', size(rf_data), 'array_order', {{'tx', 'rx', 'sample'}}, 'dtype', 'single');
+    receive_channel_metadata.units = struct('distance', 'mm', 'time', 's', 'sampling_frequency', 'Hz', 'center_frequency', 'Hz', 'sound_speed', 'm/s');
+    receive_channel_metadata.probe = struct('probe_id', 'phase2-linear-array-prototype', 'element_count', receive_element_count, 'pitch_mm', dy * 1000, 'kerf_mm', transducer.kerf * 1000, 'element_width_mm', transducer.width * 1000, 'element_height_mm', transducer.height * 1000, 'coordinate_frame', 'simulation_grid_mm');
+    receive_channel_metadata.acquisition = struct('transmit_event_count', 1, 'receive_element_count', receive_element_count, 'sample_count', size(rf_data, 3), 'sampling_frequency_hz', 1 / (kgrid.t_array(2) - kgrid.t_array(1)), 'center_frequency_hz', transducer.frequency, 'sound_speed_m_per_s', 1540, 'tx_focus_mm', focal_depth_mm, 'tx_steering_deg', 0, 'recorded_quantity', 'pressure_time_series');
+    receive_channel_metadata.coordinate_system = struct('frame', 'simulation_grid_mm', 'handedness', 'right-handed', 'axes', struct('x', 'grid-x', 'y', 'grid-y', 'z', 'grid-z'));
+    receive_channel_metadata.source_artifacts = struct('tusx_input_path', input_file, 'run_directory', run_dir, 'pressure_field_path', pressure_file, 'receive_channel_raw_path', receive_channel_raw_file, 'receive_channel_data_path', receive_channel_data_file);
+    fid = fopen(receive_channel_metadata_file, 'w');
+    fprintf(fid, '%s\n', jsonencode(receive_channel_metadata));
+    fclose(fid);
+    fprintf('Receive channel metadata saved to: %s\n', receive_channel_metadata_file);
     
     % Placeholder results for now (will be replaced with B-mode processing)
     attenuation = mean(medium.alpha_coeff(:)) * frequency_mhz * 0.1;  % rough estimate
@@ -279,10 +337,11 @@ function [simulation_result, metadata] = run_tusx_simulation(input_data)
     metadata.resolution = 'Phase 3 (real k-Wave)';
     metadata.computation_time_seconds = computation_time;
     metadata.pressure_field_file = pressure_file;
+    metadata.receive_channel_raw_file = receive_channel_raw_file;
     metadata.receive_channel_data_file = receive_channel_data_file;
     metadata.receive_channel_metadata_file = receive_channel_metadata_file;
     metadata.reconstruction_metadata_file = reconstruction_metadata_file;
-    metadata.receive_channel_capture = 'planned_not_yet_implemented';
+    metadata.receive_channel_capture = 'available';
     metadata.grid_size = grid_size;
     metadata.voxel_size_mm = [dx*1000, dy*1000, dz*1000];
     metadata.notes = 'Real k-Wave simulation completed, B-mode processing pending. Receive-channel artifact paths reserved for Phase 2.';

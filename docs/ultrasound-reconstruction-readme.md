@@ -93,6 +93,10 @@ Expected changes:
 - extend `backend/app/simulation_engines.py`
 - define a stable artifact schema for receive/channel data
 
+Schema reference:
+
+- `docs/receive-channel-data-schema.md`
+
 Expected non-changes:
 
 - do not fork k-Wave just to request different sensor outputs

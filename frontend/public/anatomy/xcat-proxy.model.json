@@ -59,6 +59,16 @@
   ],
   "meshes": [
     {
+      "id": "synthetic-head-outer",
+      "label": "Synthetic Head Outer Surface",
+      "url": "/anatomy/meshes/synthetic-head-outer.obj",
+      "color": "#d8cdbd",
+      "opacity": 0.94,
+      "position": [0, 0, 0],
+      "scale": [1, 1, 1],
+      "rotationDeg": [0, 0, 0]
+    },
+    {
       "id": "pituitary-bodyparts3d",
       "label": "Pituitary Gland",
       "url": "/anatomy/meshes/pituitary-normalized.obj",

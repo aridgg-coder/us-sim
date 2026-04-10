@@ -65,6 +65,9 @@ export function SimulationWorkbench() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<SimulationResponse | null>(null);
+  const grayscaleImageSrc = result
+    ? `${apiBaseUrl}${result.grayscale_image_url}`
+    : null;
 
   function constrainProbePose(
     probeXValue: number,
@@ -573,7 +576,19 @@ export function SimulationWorkbench() {
             <h2>Grayscale Image</h2>
             <span>{result ? result.grayscale_image_url : "Placeholder render"}</span>
           </div>
-          <div className="grayscale-preview" />
+          <div className="grayscale-preview">
+            {grayscaleImageSrc ? (
+              <img
+                className="grayscale-preview-image"
+                src={grayscaleImageSrc}
+                alt="Simulation grayscale B-mode output"
+              />
+            ) : (
+              <div className="grayscale-preview-placeholder">
+                Run a simulation to render the B-mode preview.
+              </div>
+            )}
+          </div>
         </article>
       </section>
     </main>

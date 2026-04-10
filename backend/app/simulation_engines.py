@@ -158,7 +158,7 @@ def run_tusx_engine(
                 pressure_file = Path(run_directory) / "pressure_field.mat"
                 if pressure_file.exists():
                     bmode_image_path = Path(process_bmode_image(str(pressure_file), str(run_directory)))
-                    run_artifacts_root = Path(__file__).resolve().parents[1] / "run_artifacts"
+                    run_artifacts_root = Path(__file__).resolve().parents[2] / "run_artifacts"
                     relative_image_path = bmode_image_path.relative_to(run_artifacts_root)
                     grayscale_image_url = f"/static/{relative_image_path.as_posix()}"
                 else:

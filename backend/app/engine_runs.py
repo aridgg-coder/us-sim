@@ -11,7 +11,7 @@ from .tusx_handoff import build_tusx_input_package
 
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNS_DIR = ROOT / "backend" / "run_artifacts"
+RUNS_DIR = ROOT / "run_artifacts"
 
 
 def write_engine_run_artifacts(

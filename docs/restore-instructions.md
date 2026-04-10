@@ -5,17 +5,35 @@ Follow these steps to restore the repository on a new machine.
 
 ## Current Restore Point
 
-As of 2026-04-09, the latest validated restore point is on `main` at these commits:
+As of 2026-04-09, the latest pushed restore point on `main` is:
+
+- `48c193b` - CT phantom import tooling, BrainWeb-derived head surface assets, CQ500 importer scaffold, ignore rules for local datasets and runtime artifacts
+
+Important earlier milestones still included in the current branch:
 
 - `0cbeb9d` - auto-start frontend/backend services on workspace open
 - `9434d81` - frontend probe/head collision constraints and reduced viewport overlay footprint
 - `95c2dca` - automated WSL to Windows MATLAB pipeline, k-Wave source/grid fixes, B-mode URL fixes
 
-The current working codebase already includes:
+The current pushed codebase already includes:
 - frontend probe/transducer placement constraints against the visible head shell
-- reduced viewport overlay text footprint
+- BrainWeb-derived outer head mesh plus sampled surface set wired into the current frontend probe placement logic
+- generic CT NIfTI import tooling in `scripts/import_ct_head_surface.py`
+- CQ500 DICOM import tooling in `scripts/import_cq500_head_surface.py`
+- shared CT surface extraction helpers in `scripts/ct_surface_utils.py`
 - VS Code tasks plus `scripts/start_services.sh` / `scripts/stop_services.sh`
 - real backend simulation pipeline through MATLAB and k-Wave
+
+The following are intentionally local-only and are not part of the pushed restore point:
+- `.env`
+- `.pids/`
+- `run_artifacts/`
+- downloaded raw dataset archives under `backend/data/cq500/`
+- the raw BrainWeb download `backend/data/brainweb_normal_crisp.mnc.gz`
+
+Current local-only in-progress state at the time of this note:
+- the CQ500 case 0 importer was still downloading `backend/data/cq500/CQ500-CT-0.zip`
+- uncommitted editor-local files remained in `frontend/next-env.d.ts`, `.vscode/extensions.json`, and `backend/app/us-sim.code-workspace`
 
 ## 1. Clone Repository With Submodules
 

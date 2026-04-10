@@ -321,6 +321,29 @@ def load_dicom_series(series_dir: Path) -> tuple[np.ndarray, np.ndarray, dict[st
     return volume, affine_xyz, metadata
 
 
+def summarize_volume_qc(volume_zyx: np.ndarray, metadata: dict[str, object]) -> dict[str, object]:
+    spacing_x_mm, spacing_y_mm, spacing_z_mm = [float(value) for value in metadata["spacingMm"]]
+    extent_x_mm = float(volume_zyx.shape[2]) * spacing_x_mm
+    extent_y_mm = float(volume_zyx.shape[1]) * spacing_y_mm
+    extent_z_mm = float(volume_zyx.shape[0]) * spacing_z_mm
+
+    hu_min = float(np.min(volume_zyx))
+    hu_max = float(np.max(volume_zyx))
+    hu_p01 = float(np.percentile(volume_zyx, 1.0))
+    hu_p99 = float(np.percentile(volume_zyx, 99.0))
+
+    likely_full_head = extent_x_mm >= 150.0 and extent_y_mm >= 180.0 and extent_z_mm >= 160.0
+    coverage_assessment = "likely_full_head" if likely_full_head else "possibly_cropped_or_limited_fov"
+
+    return {
+        "shapeZYX": [int(value) for value in volume_zyx.shape],
+        "extentMm": [extent_x_mm, extent_y_mm, extent_z_mm],
+        "huRange": [hu_min, hu_max],
+        "huPercentiles": [hu_p01, hu_p99],
+        "coverageAssessment": coverage_assessment,
+    }
+
+
 def maybe_write_nifti(output_path: Path | None, volume_zyx: np.ndarray, affine_xyz: np.ndarray) -> None:
     if output_path is None:
         return
@@ -341,6 +364,7 @@ def main() -> None:
     series_dir = select_series_directory(extract_dir, args.series_dir)
 
     volume_zyx, affine_xyz, metadata = load_dicom_series(series_dir)
+    qc_summary = summarize_volume_qc(volume_zyx, metadata)
     maybe_write_nifti(args.output_nifti, volume_zyx, affine_xyz)
 
     payload = extract_surface_assets(
@@ -356,12 +380,21 @@ def main() -> None:
             "case": args.case,
             "archive": str(archive_path),
             **metadata,
+            "qcSummary": qc_summary,
         },
     )
 
     print(f"Case: CQ500-CT-{args.case}")
     print(f"Archive: {archive_path}")
     print(f"Series: {series_dir}")
+    print(
+        "QC: "
+        f"shapeZYX={qc_summary['shapeZYX']} "
+        f"extentMm={[round(value, 1) for value in qc_summary['extentMm']]} "
+        f"huRange={[round(value, 1) for value in qc_summary['huRange']]} "
+        f"huP01P99={[round(value, 1) for value in qc_summary['huPercentiles']]} "
+        f"assessment={qc_summary['coverageAssessment']}"
+    )
     if args.output_nifti is not None:
         print(f"NIfTI: {args.output_nifti}")
     print(f"OBJ: {args.output_obj}")
